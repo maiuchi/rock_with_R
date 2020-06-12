@@ -9,7 +9,7 @@ library(ggplot2)
 
 #nyc leading cause of death------------------------------------------------------------------------------
 getwd()
-setwd("/Users/maiuchida/Desktop/rock_with_R/data/")
+setwd("/YOUR FILE PATH HERE/")
 
 #upload data ---------------------------------------------------------------------------------------------
 #download the csv file to your computer and load from there

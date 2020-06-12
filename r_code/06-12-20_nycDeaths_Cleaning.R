@@ -2,7 +2,7 @@
 #########################06-12-20######
 
 getwd()
-setwd("/Users/maiuchida/Desktop/R_workshop/Prep/data/")
+setwd("/YOUR FILE PATH HERE/")
 
 library(dplyr)
 library(tidyverse)
