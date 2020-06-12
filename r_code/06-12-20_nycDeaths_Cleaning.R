@@ -2,7 +2,7 @@
 #########################06-12-20######
 
 getwd()
-setwd("/Your File Path Here/")
+setwd("/Users/maiuchida/Desktop/R_workshop/Prep/data/")
 
 library(dplyr)
 library(tidyverse)
@@ -44,10 +44,10 @@ nycDeath2$leadingCause <- str_trim(nycDeath2$leadingCause, "right")
 unique(nycDeath2$leadingCause)
 
 #changing the labeling of the cause of death (some more of manual changes)
-nycDeath$leadingCause[which(nycDeath$leadingCause == "Influenza")] <- "Influenza and Pneumonia"
-nycDeath$leadingCause[which(nycDeath$leadingCause == "Assault")] <- "Homicide"
-nycDeath$leadingCause[which(nycDeath$leadingCause == "All Other Causes")] <- "Other"
-nycDeath$leadingCause[which(nycDeath$leadingCause == "Malignant Neoplasms")] <- "Cancer"
+nycDeath2$leadingCause[which(nycDeath2$leadingCause == "Influenza")] <- "Influenza and Pneumonia"
+nycDeath2$leadingCause[which(nycDeath2$leadingCause == "Assault")] <- "Homicide"
+nycDeath2$leadingCause[which(nycDeath2$leadingCause == "All Other Causes")] <- "Other"
+nycDeath2$leadingCause[which(nycDeath2$leadingCause == "Malignant Neoplasms")] <- "Cancer"
 
 
 #export to csv------------------

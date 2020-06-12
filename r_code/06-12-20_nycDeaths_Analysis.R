@@ -3,7 +3,7 @@
 
 #nyc leading cause of death------------------------------------------------------------------------------
 getwd()
-setwd("/Your File Path Here/")
+setwd("/Users/maiuchida/Desktop/rock_with_R/data/")
 
 #upload data
 nycDeath <- read_csv("nyc_death_cause_CLN.csv")
@@ -72,14 +72,14 @@ deathTrends_f_white <- nycDeath %>%
 #filter top 3 causes of death among while women (excluding "All the Other Cause")
 deathTrends_f_white_top <- deathTrends_f_white %>% 
   filter(leadingCause == "Diseases of Heart"|
-         leadingCause == "Malignant Neoplasms"|
-         leadingCause == "Influenza")
+         leadingCause == "Cancer"|
+         leadingCause == "Influenza and Pneumonia")
 
 #change the order of the cause of death (to make the legend being ordered)
 deathTrends_f_white_top$leadingCause <- factor(deathTrends_f_white_top$leadingCause, levels = 
                                                                                      c("Diseases of Heart",
-                                                                                       "Malignant Neoplasms", 
-                                                                                       "Influenza"))
+                                                                                       "Cancer", 
+                                                                                       "Influenza and Pneumonia"))
   
 #create a visualization that shows the yearly trends of the three top cause of deaths among white women
 ggplot(deathTrends_f_white_top, aes(year, deaths, group = leadingCause, color = leadingCause)) +
