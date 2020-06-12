@@ -1,12 +1,23 @@
 #####R Workshop Practice Problem####### -- Data Analysis
 #########################06-12-20######
 
+library(tidyverse)
+library(tidyr)
+library(RCurl)
+library(dplyr)
+library(ggplot2)
+
 #nyc leading cause of death------------------------------------------------------------------------------
 getwd()
 setwd("/Your File Path Here/")
 
-#upload data
+#upload data ---------------------------------------------------------------------------------------------
+#download the csv file to your computer and load from there
 nycDeath <- read_csv("nyc_death_cause_CLN.csv")
+
+#load directly from github page 
+url <- getURL("https://raw.githubusercontent.com/maiuchi/rock_with_R/master/data/nyc_death_cause_CLN.csv")
+nycDeath <- read.csv(text = url)
 
 glimpse(nycDeath)
 
