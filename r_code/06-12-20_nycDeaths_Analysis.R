@@ -1,13 +1,25 @@
 #####R Workshop Practice Problem####### -- Data Analysis
 #########################06-12-20######
 
+library(tidyverse)
+library(tidyr)
+library(RCurl)
+library(dplyr)
+library(ggplot2)
+
 #nyc leading cause of death------------------------------------------------------------------------------
 getwd()
 setwd("/Users/maiuchida/Desktop/rock_with_R/data/")
 
-#upload data
+#upload data ---------------------------------------------------------------------------------------------
+#download the csv file to your computer and load from there
 nycDeath <- read_csv("nyc_death_cause_CLN.csv")
 
+#Or load directly from github page 
+url <- getURL("https://raw.githubusercontent.com/maiuchi/rock_with_R/master/data/nyc_death_cause_CLN.csv")
+nycDeath <- read.csv(text = url)
+
+#check the data structure
 glimpse(nycDeath)
 
 #change the data type of year to charactor
@@ -28,6 +40,7 @@ death2014_heart_f <- nycDeath %>%
   filter(leadingCause == "Diseases of Heart") %>%
   arrange(desc(deaths))
 
+#create a bar graph that shows the distribution of the cause of deaths as heart disease among women in 2014 by race
 ggplot(death2014_heart_f, aes(reorder(raceEthnicity, - deaths), deaths, group = year, fill = year)) + 
   geom_bar(stat = "identity")
 
