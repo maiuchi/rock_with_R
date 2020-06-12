@@ -8,6 +8,11 @@ library(dplyr)
 library(tidyverse)
 library(stringr)
 
+#donwload original dataset from: 
+https://data.cityofnewyork.us/Health/New-York-City-Leading-Causes-of-Death/jb7j-dtam
+
+#name the dataset as "nyc_death_cause.csv"
+
 #load your data 
 nycDeath <- read_csv("nyc_death_cause.csv")
 
