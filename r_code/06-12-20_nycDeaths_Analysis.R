@@ -22,11 +22,14 @@ nycDeath <- read.csv(text = url)
 #check the data structure
 glimpse(nycDeath)
 
-#change the data type of year to charactor
+#change the data type of year to character
 nycDeath$year <- as.character(nycDeath$year)
 
 #check how many years they are in the dataset
 table(nycDeath$Year)
+
+#How many different types of disease does this dataset have? 
+unique(nycDeath$leadingCause)
 
 
 #check the top leading cause of death
