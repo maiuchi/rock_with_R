@@ -54,7 +54,7 @@ death2007_14_heart_f <- nycDeath %>%
   filter(leadingCause == "Diseases of Heart") %>% 
   arrange(year, deaths)
 
-#visualize the number of deaths by heart diseases (2007 vs 20017) by race - ethnicities
+#visualize the number of deaths by heart diseases (2007 vs 2014) by race - ethnicities
 ggplot(death2007_14_heart_f, aes(raceEthnicity, deaths, group = year, fill = year)) + 
   geom_bar(stat = "identity", position = position_dodge())
 
