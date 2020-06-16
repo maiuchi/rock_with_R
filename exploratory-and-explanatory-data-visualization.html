@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Exploratory and explanatory data visualization | Rock Your Resume with R</title>
+  <meta name="description" content="3 Exploratory and explanatory data visualization | Rock Your Resume with R" />
+  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Exploratory and explanatory data visualization | Rock Your Resume with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Exploratory and explanatory data visualization | Rock Your Resume with R" />
+  
+  
+  
+
+<meta name="author" content="Mai Uchida" />
+
+
+<meta name="date" content="2020-06-15" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="data-visualization-101.html"/>
+<link rel="next" href="data-analysis-in-r.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Rock Your Resume with R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome!</a></li>
+<li class="chapter" data-level="1" data-path="why-learn-r.html"><a href="why-learn-r.html"><i class="fa fa-check"></i><b>1</b> Why learn R?</a><ul>
+<li class="chapter" data-level="" data-path="why-learn-r.html"><a href="why-learn-r.html#pros-and-cons-of-r"><i class="fa fa-check"></i>Pros and Cons of R</a></li>
+<li class="chapter" data-level="" data-path="why-learn-r.html"><a href="why-learn-r.html#learning-a-programing-language-is-an-investment-choose-wisely"><i class="fa fa-check"></i>Learning a programing language is an investment, choose wisely</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-visualization-101.html"><a href="data-visualization-101.html"><i class="fa fa-check"></i><b>2</b> Data visualization 101</a><ul>
+<li class="chapter" data-level="" data-path="data-visualization-101.html"><a href="data-visualization-101.html#what-is-data-visualization"><i class="fa fa-check"></i>What is data visualization?</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-101.html"><a href="data-visualization-101.html#why-visualization-matters"><i class="fa fa-check"></i>Why visualization matters?</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-101.html"><a href="data-visualization-101.html#what-makes-it-a-good-visualization"><i class="fa fa-check"></i>What makes it a good visualization?</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="exploratory-and-explanatory-data-visualization.html"><a href="exploratory-and-explanatory-data-visualization.html"><i class="fa fa-check"></i><b>3</b> Exploratory and explanatory data visualization</a><ul>
+<li class="chapter" data-level="" data-path="exploratory-and-explanatory-data-visualization.html"><a href="exploratory-and-explanatory-data-visualization.html#exploratory-visualization"><i class="fa fa-check"></i>Exploratory visualization</a></li>
+<li class="chapter" data-level="" data-path="exploratory-and-explanatory-data-visualization.html"><a href="exploratory-and-explanatory-data-visualization.html#explanatory-visualization"><i class="fa fa-check"></i>Explanatory visualization</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-analysis-in-r.html"><a href="data-analysis-in-r.html"><i class="fa fa-check"></i><b>4</b> Data analysis in R</a><ul>
+<li class="chapter" data-level="4.1" data-path="data-analysis-in-r.html"><a href="data-analysis-in-r.html#r-studio"><i class="fa fa-check"></i><b>4.1</b> R Studio</a></li>
+<li class="chapter" data-level="4.2" data-path="data-analysis-in-r.html"><a href="data-analysis-in-r.html#set-up-an-environment"><i class="fa fa-check"></i><b>4.2</b> Set up an environment</a></li>
+<li class="chapter" data-level="4.3" data-path="data-analysis-in-r.html"><a href="data-analysis-in-r.html#r-packages"><i class="fa fa-check"></i><b>4.3</b> R packages</a></li>
+<li class="chapter" data-level="4.4" data-path="data-analysis-in-r.html"><a href="data-analysis-in-r.html#oooops-my-code-is-not-working"><i class="fa fa-check"></i><b>4.4</b> Oooops, my code is not working!</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="base-r-syntax-and-data-type.html"><a href="base-r-syntax-and-data-type.html"><i class="fa fa-check"></i><b>5</b> Base R syntax and data type</a><ul>
+<li class="chapter" data-level="5.1" data-path="base-r-syntax-and-data-type.html"><a href="base-r-syntax-and-data-type.html#data-type"><i class="fa fa-check"></i><b>5.1</b> Data type</a></li>
+<li class="chapter" data-level="5.2" data-path="base-r-syntax-and-data-type.html"><a href="base-r-syntax-and-data-type.html#create-a-variable-and-assign-a-value"><i class="fa fa-check"></i><b>5.2</b> Create a variable and assign a value</a></li>
+<li class="chapter" data-level="5.3" data-path="base-r-syntax-and-data-type.html"><a href="base-r-syntax-and-data-type.html#create-variables-and-calculate"><i class="fa fa-check"></i><b>5.3</b> Create variables and calculate</a></li>
+<li class="chapter" data-level="5.4" data-path="base-r-syntax-and-data-type.html"><a href="base-r-syntax-and-data-type.html#create-a-new-variable-and-assign-the-sum"><i class="fa fa-check"></i><b>5.4</b> Create a new variable and assign the sum</a></li>
+<li class="chapter" data-level="5.5" data-path="base-r-syntax-and-data-type.html"><a href="base-r-syntax-and-data-type.html#use-functions"><i class="fa fa-check"></i><b>5.5</b> Use functions</a></li>
+<li class="chapter" data-level="5.6" data-path="base-r-syntax-and-data-type.html"><a href="base-r-syntax-and-data-type.html#make-a-data-frame"><i class="fa fa-check"></i><b>5.6</b> Make a data frame</a></li>
+<li class="chapter" data-level="5.7" data-path="base-r-syntax-and-data-type.html"><a href="base-r-syntax-and-data-type.html#create-a-simple-plot"><i class="fa fa-check"></i><b>5.7</b> Create a simple plot</a></li>
+<li class="chapter" data-level="5.8" data-path="base-r-syntax-and-data-type.html"><a href="base-r-syntax-and-data-type.html#use-a-pre-made-dataset-to-examine-and-plot-the-data"><i class="fa fa-check"></i><b>5.8</b> Use a pre-made dataset to examine and plot the data</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html"><i class="fa fa-check"></i><b>6</b> Snippets of dplyr and ggplot</a><ul>
+<li class="chapter" data-level="6.1" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#what-is-dplyr"><i class="fa fa-check"></i><b>6.1</b> What is dplyr?</a></li>
+<li class="chapter" data-level="6.2" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#why-is-dplyr-so-handy"><i class="fa fa-check"></i><b>6.2</b> Why is dplyr so handy?</a></li>
+<li class="chapter" data-level="6.3" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#filter-subset-data-using-dplyr"><i class="fa fa-check"></i><b>6.3</b> Filter/ subset data using dplyr</a></li>
+<li class="chapter" data-level="6.4" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#filter-data-with-multiple-conditions-using-dplyr"><i class="fa fa-check"></i><b>6.4</b> Filter data with multiple conditions using dplyr</a></li>
+<li class="chapter" data-level="6.5" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#what-is-ggplot"><i class="fa fa-check"></i><b>6.5</b> What is ggplot?</a></li>
+<li class="chapter" data-level="6.6" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#why-is-ggplot-so-handy"><i class="fa fa-check"></i><b>6.6</b> Why is ggplot so handy?</a></li>
+<li class="chapter" data-level="6.7" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#create-your-first-line-graph-using-ggplot"><i class="fa fa-check"></i><b>6.7</b> Create your first line graph using ggplot</a></li>
+<li class="chapter" data-level="6.8" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#format-a-graph"><i class="fa fa-check"></i><b>6.8</b> Format a graph</a></li>
+<li class="chapter" data-level="6.9" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#clean-up-a-graph-even-more"><i class="fa fa-check"></i><b>6.9</b> Clean up a graph even more!</a></li>
+<li class="chapter" data-level="6.10" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#final-r-code-for-this-exercise"><i class="fa fa-check"></i><b>6.10</b> Final R code for this exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="practice-problem.html"><a href="practice-problem.html"><i class="fa fa-check"></i><b>7</b> Practice Problem</a><ul>
+<li class="chapter" data-level="7.1" data-path="practice-problem.html"><a href="practice-problem.html#set-up-an-environment-1"><i class="fa fa-check"></i><b>7.1</b> Set up an environment</a></li>
+<li class="chapter" data-level="7.2" data-path="practice-problem.html"><a href="practice-problem.html#load-the-new-york-city-leading-cause-of-death-data"><i class="fa fa-check"></i><b>7.2</b> Load the New York City Leading Cause of Death data</a></li>
+<li class="chapter" data-level="7.3" data-path="practice-problem.html"><a href="practice-problem.html#examine-the-data"><i class="fa fa-check"></i><b>7.3</b> Examine the data</a></li>
+<li class="chapter" data-level="7.4" data-path="practice-problem.html"><a href="practice-problem.html#want-to-learn-more-about-r-and-data-viz"><i class="fa fa-check"></i><b>7.4</b> Want to learn more about R and data viz?</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Rock Your Resume with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="exploratory-and-explanatory-data-visualization" class="section level1">
+<h1><span class="header-section-number">3</span> Exploratory and explanatory data visualization</h1>
+<div id="exploratory-visualization" class="section level2 unnumbered">
+<h2>Exploratory visualization</h2>
+<div id="an-effective-tool-to-help-us-understand-the-data-datacamp-2019" class="section level4 unnumbered">
+<h4>An effective tool to &quot;<span style="color: #ef6079ff"><strong>help us understand the data</strong></span>&quot; (DataCamp, 2019)</h4>
+<p><span style="color: #ef6079ff"><strong>Anscombe's Quartet</strong></span> is a classic example that depicts why exploratory visualization is important. This concept is demonstrated by a statistician Francis Anscombe. The dataset consists as follows:</p>
+<div class="figure">
+<img src="https://raw.githubusercontent.com/maiuchi/rock_with_R/master/img/Anscombe_data_1.png" />
+
+</div>
+<p>When you calculate some of the descriptive statistics, you will soon notice that those are pretty much exactly the same.</p>
+<div class="figure">
+<img src="https://raw.githubusercontent.com/maiuchi/rock_with_R/master/img/anscombe_sum.png" />
+
+</div>
+<p>However, when we visualize this data, we know that their distributions are quite different:</p>
+<div class="figure">
+<img src="https://raw.githubusercontent.com/maiuchi/rock_with_R/master/img/Anscombe_graphs.png" />
+
+</div>
+<p>This highlights the reason as to why exploratory visualization is important! When you conduct any kind of data analysis, we usually visualize data <span style="color: #ef6079ff"><strong>first</strong></span> to make sure the distributions. The purpose of exploratory data visualization is to understand the data better. Therefore, <span style="color: #ef6079ff"><strong>no need</strong></span> to spend time to make visuals clean and digestible for others.</p>
+</div>
+</div>
+<div id="explanatory-visualization" class="section level2 unnumbered">
+<h2>Explanatory visualization</h2>
+<div id="an-effective-tool-to-communicate-with-others" class="section level4 unnumbered">
+<h4>An effective tool to <span style="color: #ef6079ff"><strong>communicate with others</strong></span></h4>
+<p>Unlike exploratory analysis, explanatory analysis comes to the last part of your data analysis project. The purpose of explanatory visualization is to communicate with others regarding <span style="color: #ef6079ff"><strong>your final results</strong></span>.</p>
+<p>When you make an explanatory visualization piece, make sure to think about the elements in <a href="data-visualization-101.html#what-makes-it-a-good-visualization">What makes it a good visualization?</a> The golden rules for explanatory visualization I think are: <span style="color: #ef6079ff"><strong>clean, as accurate as possible, and easy to understand</strong></span>.</p>
+<p>Also, there are types of graphs that are suitable to visualize depending on data types and patterns. For instance, if you are making an explanatory visualization piece for a time-trend analysis, line graphs are good ones to use. <br /> <br /> Here is <a href="https://datavizcatalogue.com/">a webpage</a> that showcases types of graph you can use. I understand that <span style="color: #ef6079ff"><strong>complex graphs</strong></span> are usually more visually appealing. However, please keep in mind that those usually require some type of design skills to make. Also, your audience need to study the graphs to understand. Therefore, <span style="color: #ef6079ff"><strong>think which occasion, medium, and audience</strong></span> will be appropriate to make more complex graphs. <br /> <br /> One last thing... when you make explanatory visualization pieces, you will often need to reformat/ recreate datasets. This means that the process might take longer than you think to visualize your data effectively.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-visualization-101.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-analysis-in-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["06-05-20_r_wokshop_test.pdf", "06-05-20_r_wokshop_test.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

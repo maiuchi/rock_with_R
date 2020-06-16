@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>7 Practice Problem | Rock Your Resume with R</title>
+  <meta name="description" content="7 Practice Problem | Rock Your Resume with R" />
+  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="7 Practice Problem | Rock Your Resume with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="7 Practice Problem | Rock Your Resume with R" />
+  
+  
+  
+
+<meta name="author" content="Mai Uchida" />
+
+
+<meta name="date" content="2020-06-15" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="snippets-of-dplyr-and-ggplot.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Rock Your Resume with R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome!</a></li>
+<li class="chapter" data-level="1" data-path="why-learn-r.html"><a href="why-learn-r.html"><i class="fa fa-check"></i><b>1</b> Why learn R?</a><ul>
+<li class="chapter" data-level="" data-path="why-learn-r.html"><a href="why-learn-r.html#pros-and-cons-of-r"><i class="fa fa-check"></i>Pros and Cons of R</a></li>
+<li class="chapter" data-level="" data-path="why-learn-r.html"><a href="why-learn-r.html#learning-a-programing-language-is-an-investment-choose-wisely"><i class="fa fa-check"></i>Learning a programing language is an investment, choose wisely</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-visualization-101.html"><a href="data-visualization-101.html"><i class="fa fa-check"></i><b>2</b> Data visualization 101</a><ul>
+<li class="chapter" data-level="" data-path="data-visualization-101.html"><a href="data-visualization-101.html#what-is-data-visualization"><i class="fa fa-check"></i>What is data visualization?</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-101.html"><a href="data-visualization-101.html#why-visualization-matters"><i class="fa fa-check"></i>Why visualization matters?</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-101.html"><a href="data-visualization-101.html#what-makes-it-a-good-visualization"><i class="fa fa-check"></i>What makes it a good visualization?</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="exploratory-and-explanatory-data-visualization.html"><a href="exploratory-and-explanatory-data-visualization.html"><i class="fa fa-check"></i><b>3</b> Exploratory and explanatory data visualization</a><ul>
+<li class="chapter" data-level="" data-path="exploratory-and-explanatory-data-visualization.html"><a href="exploratory-and-explanatory-data-visualization.html#exploratory-visualization"><i class="fa fa-check"></i>Exploratory visualization</a></li>
+<li class="chapter" data-level="" data-path="exploratory-and-explanatory-data-visualization.html"><a href="exploratory-and-explanatory-data-visualization.html#explanatory-visualization"><i class="fa fa-check"></i>Explanatory visualization</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-analysis-in-r.html"><a href="data-analysis-in-r.html"><i class="fa fa-check"></i><b>4</b> Data analysis in R</a><ul>
+<li class="chapter" data-level="4.1" data-path="data-analysis-in-r.html"><a href="data-analysis-in-r.html#r-studio"><i class="fa fa-check"></i><b>4.1</b> R Studio</a></li>
+<li class="chapter" data-level="4.2" data-path="data-analysis-in-r.html"><a href="data-analysis-in-r.html#set-up-an-environment"><i class="fa fa-check"></i><b>4.2</b> Set up an environment</a></li>
+<li class="chapter" data-level="4.3" data-path="data-analysis-in-r.html"><a href="data-analysis-in-r.html#r-packages"><i class="fa fa-check"></i><b>4.3</b> R packages</a></li>
+<li class="chapter" data-level="4.4" data-path="data-analysis-in-r.html"><a href="data-analysis-in-r.html#oooops-my-code-is-not-working"><i class="fa fa-check"></i><b>4.4</b> Oooops, my code is not working!</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="base-r-syntax-and-data-type.html"><a href="base-r-syntax-and-data-type.html"><i class="fa fa-check"></i><b>5</b> Base R syntax and data type</a><ul>
+<li class="chapter" data-level="5.1" data-path="base-r-syntax-and-data-type.html"><a href="base-r-syntax-and-data-type.html#data-type"><i class="fa fa-check"></i><b>5.1</b> Data type</a></li>
+<li class="chapter" data-level="5.2" data-path="base-r-syntax-and-data-type.html"><a href="base-r-syntax-and-data-type.html#create-a-variable-and-assign-a-value"><i class="fa fa-check"></i><b>5.2</b> Create a variable and assign a value</a></li>
+<li class="chapter" data-level="5.3" data-path="base-r-syntax-and-data-type.html"><a href="base-r-syntax-and-data-type.html#create-variables-and-calculate"><i class="fa fa-check"></i><b>5.3</b> Create variables and calculate</a></li>
+<li class="chapter" data-level="5.4" data-path="base-r-syntax-and-data-type.html"><a href="base-r-syntax-and-data-type.html#create-a-new-variable-and-assign-the-sum"><i class="fa fa-check"></i><b>5.4</b> Create a new variable and assign the sum</a></li>
+<li class="chapter" data-level="5.5" data-path="base-r-syntax-and-data-type.html"><a href="base-r-syntax-and-data-type.html#use-functions"><i class="fa fa-check"></i><b>5.5</b> Use functions</a></li>
+<li class="chapter" data-level="5.6" data-path="base-r-syntax-and-data-type.html"><a href="base-r-syntax-and-data-type.html#make-a-data-frame"><i class="fa fa-check"></i><b>5.6</b> Make a data frame</a></li>
+<li class="chapter" data-level="5.7" data-path="base-r-syntax-and-data-type.html"><a href="base-r-syntax-and-data-type.html#create-a-simple-plot"><i class="fa fa-check"></i><b>5.7</b> Create a simple plot</a></li>
+<li class="chapter" data-level="5.8" data-path="base-r-syntax-and-data-type.html"><a href="base-r-syntax-and-data-type.html#use-a-pre-made-dataset-to-examine-and-plot-the-data"><i class="fa fa-check"></i><b>5.8</b> Use a pre-made dataset to examine and plot the data</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html"><i class="fa fa-check"></i><b>6</b> Snippets of dplyr and ggplot</a><ul>
+<li class="chapter" data-level="6.1" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#what-is-dplyr"><i class="fa fa-check"></i><b>6.1</b> What is dplyr?</a></li>
+<li class="chapter" data-level="6.2" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#why-is-dplyr-so-handy"><i class="fa fa-check"></i><b>6.2</b> Why is dplyr so handy?</a></li>
+<li class="chapter" data-level="6.3" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#filter-subset-data-using-dplyr"><i class="fa fa-check"></i><b>6.3</b> Filter/ subset data using dplyr</a></li>
+<li class="chapter" data-level="6.4" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#filter-data-with-multiple-conditions-using-dplyr"><i class="fa fa-check"></i><b>6.4</b> Filter data with multiple conditions using dplyr</a></li>
+<li class="chapter" data-level="6.5" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#what-is-ggplot"><i class="fa fa-check"></i><b>6.5</b> What is ggplot?</a></li>
+<li class="chapter" data-level="6.6" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#why-is-ggplot-so-handy"><i class="fa fa-check"></i><b>6.6</b> Why is ggplot so handy?</a></li>
+<li class="chapter" data-level="6.7" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#create-your-first-line-graph-using-ggplot"><i class="fa fa-check"></i><b>6.7</b> Create your first line graph using ggplot</a></li>
+<li class="chapter" data-level="6.8" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#format-a-graph"><i class="fa fa-check"></i><b>6.8</b> Format a graph</a></li>
+<li class="chapter" data-level="6.9" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#clean-up-a-graph-even-more"><i class="fa fa-check"></i><b>6.9</b> Clean up a graph even more!</a></li>
+<li class="chapter" data-level="6.10" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#final-r-code-for-this-exercise"><i class="fa fa-check"></i><b>6.10</b> Final R code for this exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="practice-problem.html"><a href="practice-problem.html"><i class="fa fa-check"></i><b>7</b> Practice Problem</a><ul>
+<li class="chapter" data-level="7.1" data-path="practice-problem.html"><a href="practice-problem.html#set-up-an-environment-1"><i class="fa fa-check"></i><b>7.1</b> Set up an environment</a></li>
+<li class="chapter" data-level="7.2" data-path="practice-problem.html"><a href="practice-problem.html#load-the-new-york-city-leading-cause-of-death-data"><i class="fa fa-check"></i><b>7.2</b> Load the New York City Leading Cause of Death data</a></li>
+<li class="chapter" data-level="7.3" data-path="practice-problem.html"><a href="practice-problem.html#examine-the-data"><i class="fa fa-check"></i><b>7.3</b> Examine the data</a></li>
+<li class="chapter" data-level="7.4" data-path="practice-problem.html"><a href="practice-problem.html#want-to-learn-more-about-r-and-data-viz"><i class="fa fa-check"></i><b>7.4</b> Want to learn more about R and data viz?</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Rock Your Resume with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="practice-problem" class="section level1">
+<h1><span class="header-section-number">7</span> Practice Problem</h1>
+<div id="set-up-an-environment-1" class="section level2">
+<h2><span class="header-section-number">7.1</span> Set up an environment</h2>
+<ul>
+<li>Create an <span style="color: #ef6079ff"><strong>R project</strong></span> file (optional)
+<ul>
+<li>name it: &quot;ws_practice&quot;</li>
+</ul></li>
+<li>Create an <span style="color: #ef6079ff"><strong>R script</strong></span>
+<ul>
+<li>name it: &quot;ws_practice_Analysis&quot;</li>
+</ul></li>
+</ul>
+</div>
+<div id="load-the-new-york-city-leading-cause-of-death-data" class="section level2">
+<h2><span class="header-section-number">7.2</span> Load the New York City Leading Cause of Death data</h2>
+<ul>
+<li>Install and load <span style="color: #ef6079ff"><strong>packages</strong></span> you need for the project</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#install packages </span>
+<span class="kw">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)
+<span class="kw">install.packages</span>(<span class="st">&quot;dyplyr&quot;</span>)
+<span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)
+<span class="kw">install.packages</span>(<span class="st">&quot;RCurl&quot;</span>)
+  
+<span class="co">#load packages</span>
+<span class="kw">library</span>(ggplot2)
+<span class="kw">library</span>(dplyr)
+<span class="kw">library</span>(tidyverse)
+<span class="kw">library</span>(RCurl)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#to check installed packages, run the code below or click &quot;packages&quot; on R studio</span>
+ip =<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">installed.packages</span>()[,<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span><span class="op">:</span><span class="dv">4</span>)])
+ip =<span class="st"> </span>ip[<span class="kw">is.na</span>(ip<span class="op">$</span>Priority),<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>,drop=<span class="ot">FALSE</span>]ip </code></pre></div>
+<ul>
+<li>Check and set <span style="color: #ef6079ff"><strong>work directory</strong></span></li>
+<li>Load the dataset
+<ul>
+<li><span style="color: #ef6079ff"><strong>download</strong></span> dataset from <a href="https://raw.githubusercontent.com/maiuchi/rock_with_R/master/data/nyc_death_cause_CLN.csv">here</a></li>
+<li>This is a clean dataset, and the original is located <a href="https://data.cityofnewyork.us/Health/New-York-City-Leading-Causes-of-Death/jb7j-dtam">here</a></li>
+<li>Code I wrote to clean the dataset is <a href="https://github.com/maiuchi/rock_with_R/blob/master/r_code/06-12-20_nycDeaths_Cleaning.R">here</a></li>
+</ul></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#check your work directory </span>
+<span class="kw">getwd</span>()
+
+<span class="co">#set your work directory </span>
+<span class="kw">setwd</span>(<span class="st">&quot;/YOUR FILE PATH HERE/&quot;</span>)
+
+<span class="co">#upload data-----------------------------------------------</span>
+<span class="co">#download the csv file to your computer and load from there</span>
+nycDeath &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;nyc_death_cause_CLN.csv&quot;</span>)
+
+<span class="co">#Or load directly from github page </span>
+url &lt;-<span class="st"> </span><span class="kw">getURL</span>(<span class="st">&quot;https://raw.githubusercontent.com/maiuchi/rock_with_R/master/data/nyc_death_cause_CLN.csv&quot;</span>)
+nycDeath &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">text =</span> url)</code></pre></div>
+</div>
+<div id="examine-the-data" class="section level2">
+<h2><span class="header-section-number">7.3</span> Examine the data</h2>
+<p>Okay, my help for this project is until here... because you know how to performs tasks or to figure out how to perform tasks (see hints and steps below). Good luck with making two nice looking graphs!</p>
+<div id="produce-following-deliverables-graphs-are-samples" class="section level4 unnumbered">
+<h4>Produce following deliverables (graphs are samples):</h4>
+<ul>
+<li>One graph that shows the comparison of 2007 and 2014 about the number of deaths by heart disease across four race (White, Black, Hispanic, and Asian)</li>
+</ul>
+<div class="figure">
+<img src="https://raw.githubusercontent.com/maiuchi/rock_with_R/master/img/graph1.png" />
+
+</div>
+<ul>
+<li>One graph that shows the yearly trend (2007 - 2014) of top three leading cause of deaths (except Other) in NYC among White females</li>
+</ul>
+<div class="figure">
+<img src="https://raw.githubusercontent.com/maiuchi/rock_with_R/master/img/Graph2.png" />
+
+</div>
+</div>
+<div id="hints-steps" class="section level4 unnumbered">
+<h4>Hints/ Steps</h4>
+<ol style="list-style-type: decimal">
+<li>Check <span style="color: #ef6079ff"><strong>the data structure</strong></span>
+<ul>
+<li>From what year to what year does this dataset contain?</li>
+</ul></li>
+<li>Change the <span style="color: #ef6079ff"><strong>data type</strong></span> of year to <span style="color: #ef6079ff"><strong>character</strong></span>
+<ul>
+<li>Think why you do this?</li>
+</ul></li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#use this code to change the data type</span>
+nycDeath<span class="op">$</span>year &lt;-<span class="st"> </span><span class="kw">as.character</span>(nycDeath<span class="op">$</span>year)</code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Check how many years they are in the dataset</li>
+<li>How many <span style="color: #ef6079ff"><strong>different types of disease</strong></span> does this dataset have? (optional)</li>
+<li>Check the <span style="color: #ef6079ff"><strong>top</strong></span> leading cause of deaths</li>
+<li><strong>(Graph 1)</strong> Filter 2007, 2014, female, and heart disease
+<ul>
+<li>create a subset data frame called: death2007_14_heart_f</li>
+</ul></li>
+<li><span style="color: #ef6079ff"><strong>Visualize</strong></span> the number of deaths by heart diseases (2007 vs 2014) by race - ethnicities</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#make a bar graph using ggplot (fill in data frame, x, and y by yourself)</span>
+<span class="kw">ggplot</span>(your<span class="op">-</span>data<span class="op">-</span>frame, <span class="kw">aes</span>(<span class="dt">x =</span> x<span class="op">-</span>variable, <span class="dt">y =</span> y<span class="op">-</span>variable, <span class="dt">group =</span> year, <span class="dt">fill =</span> year)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">position =</span> <span class="kw">position_dodge</span>()) <span class="co">#&quot;position = position_dodge()&quot; makes the bars put next to each other</span></code></pre></div>
+<ol start="8" style="list-style-type: decimal">
+<li><span style="color: #ef6079ff"><strong>Remove</strong></span> other and unknown race - ethnicities
+<ul>
+<li>Use an operator from <a href="snippets-of-dplyr-and-ggplot.html#filter-data-with-multiple-conditions-using-dplyr">Filter data with multiple conditions using dplyr</a></li>
+<li>Create a <span style="color: #ef6079ff"><strong>subset data frame</strong></span> called: death2007_14_heart_f_2</li>
+</ul></li>
+<li>Clean up a graph 1
+<ul>
+<li><span style="color: #ef6079ff"><strong>reorder</strong></span> the bars from larger to smaller</li>
+<li>change the <span style="color: #ef6079ff"><strong>color</strong></span> of bars (optional)</li>
+<li>add <span style="color: #ef6079ff"><strong>title</strong></span>, <span style="color: #ef6079ff"><strong>subtitle</strong></span>, <span style="color: #ef6079ff"><strong>caption</strong></span></li>
+<li>change <span style="color: #ef6079ff"><strong>x axis label</strong></span> to &quot;race&quot;</li>
+<li>change <span style="color: #ef6079ff"><strong>y axis label</strong></span> to &quot;cases&quot;</li>
+<li>add or change the <span style="color: #ef6079ff"><strong>theme</strong></span></li>
+<li>change <span style="color: #ef6079ff"><strong>legend position</strong></span>
+<ul>
+<li>use <span style="color: #ef6079ff"><strong>theme()</strong></span> function</li>
+</ul></li>
+<li>change the color and size of <span style="color: #ef6079ff"><strong>caption</strong></span> <br /> <br /></li>
+</ul></li>
+<li><strong>(Graph 2)</strong> Filter leading cause of them among white women
+<ul>
+<li>create a <span style="color: #ef6079ff"><strong>subset data frame</strong></span> called: deathTrends_f_white</li>
+</ul></li>
+<li>Filter <span style="color: #ef6079ff"><strong>top 3 causes</strong></span> of deaths among while women (excluding &quot;Other&quot;)
+<ul>
+<li>create a <span style="color: #ef6079ff"><strong>subset data frame</strong></span> called: deathTrends_f_white_top</li>
+</ul></li>
+<li>Change the order of the cause of death (to make the legend being ordered)</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#use this code to change the order </span>
+deathTrends_f_white_top<span class="op">$</span>leadingCause &lt;-<span class="st"> </span><span class="kw">factor</span>(deathTrends_f_white_top<span class="op">$</span>leadingCause, <span class="dt">levels =</span> 
+                                                                                     <span class="kw">c</span>(<span class="st">&quot;Diseases of Heart&quot;</span>,
+                                                                                       <span class="st">&quot;Cancer&quot;</span>, 
+                                                                                       <span class="st">&quot;Influenza and Pneumonia&quot;</span>))</code></pre></div>
+<ol start="13" style="list-style-type: decimal">
+<li>Create a visualization that shows the <span style="color: #ef6079ff"><strong>yearly trends</strong></span> of the top three causes of deaths among white women</li>
+<li>Clean up a graph 2 a bit
+<ul>
+<li>add <span style="color: #ef6079ff"><strong>title</strong></span>, <span style="color: #ef6079ff"><strong>subtitle</strong></span>, <span style="color: #ef6079ff"><strong>caption</strong></span></li>
+<li>change <span style="color: #ef6079ff"><strong>x axis label</strong></span> to &quot;year&quot;</li>
+<li>change <span style="color: #ef6079ff"><strong>y axis label</strong></span> to &quot;cases&quot;</li>
+<li>add or change the <span style="color: #ef6079ff"><strong>theme</strong></span></li>
+<li>change <span style="color: #ef6079ff"><strong>legend position</strong></span></li>
+<li>change the color and size of <span style="color: #ef6079ff"><strong>caption</strong></span></li>
+</ul></li>
+</ol>
+</div>
+</div>
+<div id="want-to-learn-more-about-r-and-data-viz" class="section level2">
+<h2><span class="header-section-number">7.4</span> Want to learn more about R and data viz?</h2>
+<div id="resources" class="section level4 unnumbered">
+<h4>Resources</h4>
+<ul>
+<li><a href="https://rstudio-education.github.io/hopr/">Hands-On Programming with R</a></li>
+<li><a href="https://www.tidytextmining.com/">Text Mining with R</a></li>
+<li><a href="https://r4ds.had.co.nz/">R for Data Science</a></li>
+<li><a href="https://r-graphics.org/">R Graphics Cookbook</a></li>
+<li><em>The Grammer of Graphics</em>, Leland Wilkinson</li>
+<li><em>The Visual Display of Quantitative Information</em>, Edward Tufte</li>
+</ul>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="snippets-of-dplyr-and-ggplot.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["06-05-20_r_wokshop_test.pdf", "06-05-20_r_wokshop_test.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

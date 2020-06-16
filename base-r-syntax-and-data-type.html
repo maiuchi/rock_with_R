@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5 Base R syntax and data type | Rock Your Resume with R</title>
+  <meta name="description" content="5 Base R syntax and data type | Rock Your Resume with R" />
+  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5 Base R syntax and data type | Rock Your Resume with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5 Base R syntax and data type | Rock Your Resume with R" />
+  
+  
+  
+
+<meta name="author" content="Mai Uchida" />
+
+
+<meta name="date" content="2020-06-15" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="data-analysis-in-r.html"/>
+<link rel="next" href="snippets-of-dplyr-and-ggplot.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Rock Your Resume with R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome!</a></li>
+<li class="chapter" data-level="1" data-path="why-learn-r.html"><a href="why-learn-r.html"><i class="fa fa-check"></i><b>1</b> Why learn R?</a><ul>
+<li class="chapter" data-level="" data-path="why-learn-r.html"><a href="why-learn-r.html#pros-and-cons-of-r"><i class="fa fa-check"></i>Pros and Cons of R</a></li>
+<li class="chapter" data-level="" data-path="why-learn-r.html"><a href="why-learn-r.html#learning-a-programing-language-is-an-investment-choose-wisely"><i class="fa fa-check"></i>Learning a programing language is an investment, choose wisely</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-visualization-101.html"><a href="data-visualization-101.html"><i class="fa fa-check"></i><b>2</b> Data visualization 101</a><ul>
+<li class="chapter" data-level="" data-path="data-visualization-101.html"><a href="data-visualization-101.html#what-is-data-visualization"><i class="fa fa-check"></i>What is data visualization?</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-101.html"><a href="data-visualization-101.html#why-visualization-matters"><i class="fa fa-check"></i>Why visualization matters?</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-101.html"><a href="data-visualization-101.html#what-makes-it-a-good-visualization"><i class="fa fa-check"></i>What makes it a good visualization?</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="exploratory-and-explanatory-data-visualization.html"><a href="exploratory-and-explanatory-data-visualization.html"><i class="fa fa-check"></i><b>3</b> Exploratory and explanatory data visualization</a><ul>
+<li class="chapter" data-level="" data-path="exploratory-and-explanatory-data-visualization.html"><a href="exploratory-and-explanatory-data-visualization.html#exploratory-visualization"><i class="fa fa-check"></i>Exploratory visualization</a></li>
+<li class="chapter" data-level="" data-path="exploratory-and-explanatory-data-visualization.html"><a href="exploratory-and-explanatory-data-visualization.html#explanatory-visualization"><i class="fa fa-check"></i>Explanatory visualization</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-analysis-in-r.html"><a href="data-analysis-in-r.html"><i class="fa fa-check"></i><b>4</b> Data analysis in R</a><ul>
+<li class="chapter" data-level="4.1" data-path="data-analysis-in-r.html"><a href="data-analysis-in-r.html#r-studio"><i class="fa fa-check"></i><b>4.1</b> R Studio</a></li>
+<li class="chapter" data-level="4.2" data-path="data-analysis-in-r.html"><a href="data-analysis-in-r.html#set-up-an-environment"><i class="fa fa-check"></i><b>4.2</b> Set up an environment</a></li>
+<li class="chapter" data-level="4.3" data-path="data-analysis-in-r.html"><a href="data-analysis-in-r.html#r-packages"><i class="fa fa-check"></i><b>4.3</b> R packages</a></li>
+<li class="chapter" data-level="4.4" data-path="data-analysis-in-r.html"><a href="data-analysis-in-r.html#oooops-my-code-is-not-working"><i class="fa fa-check"></i><b>4.4</b> Oooops, my code is not working!</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="base-r-syntax-and-data-type.html"><a href="base-r-syntax-and-data-type.html"><i class="fa fa-check"></i><b>5</b> Base R syntax and data type</a><ul>
+<li class="chapter" data-level="5.1" data-path="base-r-syntax-and-data-type.html"><a href="base-r-syntax-and-data-type.html#data-type"><i class="fa fa-check"></i><b>5.1</b> Data type</a></li>
+<li class="chapter" data-level="5.2" data-path="base-r-syntax-and-data-type.html"><a href="base-r-syntax-and-data-type.html#create-a-variable-and-assign-a-value"><i class="fa fa-check"></i><b>5.2</b> Create a variable and assign a value</a></li>
+<li class="chapter" data-level="5.3" data-path="base-r-syntax-and-data-type.html"><a href="base-r-syntax-and-data-type.html#create-variables-and-calculate"><i class="fa fa-check"></i><b>5.3</b> Create variables and calculate</a></li>
+<li class="chapter" data-level="5.4" data-path="base-r-syntax-and-data-type.html"><a href="base-r-syntax-and-data-type.html#create-a-new-variable-and-assign-the-sum"><i class="fa fa-check"></i><b>5.4</b> Create a new variable and assign the sum</a></li>
+<li class="chapter" data-level="5.5" data-path="base-r-syntax-and-data-type.html"><a href="base-r-syntax-and-data-type.html#use-functions"><i class="fa fa-check"></i><b>5.5</b> Use functions</a></li>
+<li class="chapter" data-level="5.6" data-path="base-r-syntax-and-data-type.html"><a href="base-r-syntax-and-data-type.html#make-a-data-frame"><i class="fa fa-check"></i><b>5.6</b> Make a data frame</a></li>
+<li class="chapter" data-level="5.7" data-path="base-r-syntax-and-data-type.html"><a href="base-r-syntax-and-data-type.html#create-a-simple-plot"><i class="fa fa-check"></i><b>5.7</b> Create a simple plot</a></li>
+<li class="chapter" data-level="5.8" data-path="base-r-syntax-and-data-type.html"><a href="base-r-syntax-and-data-type.html#use-a-pre-made-dataset-to-examine-and-plot-the-data"><i class="fa fa-check"></i><b>5.8</b> Use a pre-made dataset to examine and plot the data</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html"><i class="fa fa-check"></i><b>6</b> Snippets of dplyr and ggplot</a><ul>
+<li class="chapter" data-level="6.1" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#what-is-dplyr"><i class="fa fa-check"></i><b>6.1</b> What is dplyr?</a></li>
+<li class="chapter" data-level="6.2" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#why-is-dplyr-so-handy"><i class="fa fa-check"></i><b>6.2</b> Why is dplyr so handy?</a></li>
+<li class="chapter" data-level="6.3" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#filter-subset-data-using-dplyr"><i class="fa fa-check"></i><b>6.3</b> Filter/ subset data using dplyr</a></li>
+<li class="chapter" data-level="6.4" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#filter-data-with-multiple-conditions-using-dplyr"><i class="fa fa-check"></i><b>6.4</b> Filter data with multiple conditions using dplyr</a></li>
+<li class="chapter" data-level="6.5" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#what-is-ggplot"><i class="fa fa-check"></i><b>6.5</b> What is ggplot?</a></li>
+<li class="chapter" data-level="6.6" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#why-is-ggplot-so-handy"><i class="fa fa-check"></i><b>6.6</b> Why is ggplot so handy?</a></li>
+<li class="chapter" data-level="6.7" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#create-your-first-line-graph-using-ggplot"><i class="fa fa-check"></i><b>6.7</b> Create your first line graph using ggplot</a></li>
+<li class="chapter" data-level="6.8" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#format-a-graph"><i class="fa fa-check"></i><b>6.8</b> Format a graph</a></li>
+<li class="chapter" data-level="6.9" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#clean-up-a-graph-even-more"><i class="fa fa-check"></i><b>6.9</b> Clean up a graph even more!</a></li>
+<li class="chapter" data-level="6.10" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#final-r-code-for-this-exercise"><i class="fa fa-check"></i><b>6.10</b> Final R code for this exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="practice-problem.html"><a href="practice-problem.html"><i class="fa fa-check"></i><b>7</b> Practice Problem</a><ul>
+<li class="chapter" data-level="7.1" data-path="practice-problem.html"><a href="practice-problem.html#set-up-an-environment-1"><i class="fa fa-check"></i><b>7.1</b> Set up an environment</a></li>
+<li class="chapter" data-level="7.2" data-path="practice-problem.html"><a href="practice-problem.html#load-the-new-york-city-leading-cause-of-death-data"><i class="fa fa-check"></i><b>7.2</b> Load the New York City Leading Cause of Death data</a></li>
+<li class="chapter" data-level="7.3" data-path="practice-problem.html"><a href="practice-problem.html#examine-the-data"><i class="fa fa-check"></i><b>7.3</b> Examine the data</a></li>
+<li class="chapter" data-level="7.4" data-path="practice-problem.html"><a href="practice-problem.html#want-to-learn-more-about-r"><i class="fa fa-check"></i><b>7.4</b> Want to learn more about R?</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Rock Your Resume with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="base-r-syntax-and-data-type" class="section level1">
+<h1><span class="header-section-number">5</span> Base R syntax and data type</h1>
+<div id="data-type" class="section level2">
+<h2><span class="header-section-number">5.1</span> Data type</h2>
+<ul>
+<li><span style="color: #ef6079ff"><strong>Character vector</strong></span> (character string and/ or factor): defined by using <span style="color: #ef6079ff"><strong>&quot; &quot;</strong></span>
+<ul>
+<li>(e.g.) &quot;Jack&quot;, &quot;Rose&quot;</li>
+<li>Cannot perform mathematical calculations</li>
+</ul></li>
+<li><span style="color: #ef6079ff"><strong>Numeric vector</strong></span> (double, integer etc...): numbers are written as is
+<ul>
+<li>(e.g.) 100, 200</li>
+<li>Can preform mathematical calculation <br /></li>
+</ul></li>
+<li><span style="color: #ef6079ff"><strong>Logical vector</strong></span>: TRUE or FALSE</li>
+</ul>
+<p>Let's practice!</p>
+<ul>
+<li>write a code <em>100 + 200</em> as a numerical vector</li>
+<li>write a code <em>100 + 200</em> as a character vector</li>
+</ul>
+<iframe width="100%" height="400" src="https://rdrr.io/snippets/embed/?code=" frameborder="0">
+</iframe>
+</div>
+<div id="create-a-variable-and-assign-a-value" class="section level2">
+<h2><span class="header-section-number">5.2</span> Create a variable and assign a value</h2>
+<ul>
+<li>R is <span style="color: #ef6079ff"><strong>case sensitive</strong></span>
+<ul>
+<li><span style="color: #ef6079ff"><strong>X</strong></span> and <span style="color: #ef6079ff"><strong>x</strong></span> are two different variables for R</li>
+<li>Variable names cannot have <span style="color: #ef6079ff"><strong>a space</strong></span> in between
+<ul>
+<li><span style="color: #ef6079ff"><strong>public health</strong></span> will not work as a variable name. Instead, you can make it as <span style="color: #ef6079ff"><strong>public_health</strong></span>, <span style="color: #ef6079ff"><strong>publicHealth</strong></span> etc...</li>
+</ul></li>
+<li>You cannot start variable names with numbers
+<ul>
+<li><span style="color: #ef6079ff"><strong>7data</strong></span> will not work. Instead, name it <span style="color: #ef6079ff"><strong>data7</strong></span></li>
+</ul></li>
+<li>Variable names are better to be <span style="color: #ef6079ff"><strong>descriptive</strong></span> and easy to understand
+<ul>
+<li>Otherwise, it will confuse you in the end <br /> <br /></li>
+</ul></li>
+</ul></li>
+<li>if you want to make a variable x and assign 1 as a value
+<ul>
+<li><span style="color: #ef6079ff"><strong>&lt;-</strong></span> is the symbol we use to assign values in R</li>
+<li><span style="color: #ef6079ff"><strong>#</strong></span> is to make comments on an R script
+<ul>
+<li>Make a habit to write descriptive comments, because you will often forget what this code was for</li>
+<li>Try to keep you script neat and clean. This will help you have less bugs and make it easier to debug</li>
+</ul></li>
+</ul></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">1</span>
+x <span class="co">#check the variable</span></code></pre></div>
+<div id="lets-practice" class="section level4 unnumbered">
+<h4>Let's practice!</h4>
+<ul>
+<li>Create a variable <span style="color: #ef6079ff"><strong>pineapples</strong></span> and assign <span style="color: #ef6079ff"><strong>120</strong></span> as a numerical value
+<ul>
+<li>Check the variable</li>
+</ul></li>
+</ul>
+<iframe width="100%" height="400" src="https://rdrr.io/snippets/embed/?code=" frameborder="0">
+</iframe>
+</div>
+</div>
+<div id="create-variables-and-calculate" class="section level2">
+<h2><span class="header-section-number">5.3</span> Create variables and calculate</h2>
+<ul>
+<li>Create variables x and y.</li>
+<li>Assign 1 as a numerical value for x, 4 as a numerical value of y</li>
+<li>Add them up</li>
+<li>Check if x is bigger than y</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#create variables x, y and assign values</span>
+x &lt;-<span class="st"> </span><span class="dv">1</span>
+y &lt;-<span class="st"> </span><span class="dv">4</span>
+
+<span class="co">#add x and y</span>
+x <span class="op">+</span><span class="st"> </span>y
+
+<span class="co">#examine using logical operator </span>
+x <span class="op">&gt;</span><span class="st"> </span>y</code></pre></div>
+<div id="lets-practice-1" class="section level4 unnumbered">
+<h4>Let's practice!</h4>
+<ul>
+<li>Create a variable <span style="color: #ef6079ff"><strong>pineapples</strong></span> and assign <span style="color: #ef6079ff"><strong>120</strong></span> as a numerical value.</li>
+<li>Create a variable <span style="color: #ef6079ff"><strong>strawberries</strong></span> and assign <span style="color: #ef6079ff"><strong>70</strong></span> as a numerical value.</li>
+<li>Add them up using variable names</li>
+<li>Check if <span style="color: #ef6079ff"><strong>pineapples</strong></span> are <span style="color: #ef6079ff"><strong>larger</strong></span> than <span style="color: #ef6079ff"><strong>strawberries</strong></span> using a <span style="color: #ef6079ff"><strong>logical operator</strong></span></li>
+</ul>
+<iframe width="100%" height="400" src="https://rdrr.io/snippets/embed/?code=" frameborder="0">
+</iframe>
+</div>
+</div>
+<div id="create-a-new-variable-and-assign-the-sum" class="section level2">
+<h2><span class="header-section-number">5.4</span> Create a new variable and assign the sum</h2>
+<ul>
+<li>Create a variable z and assign the sum of x + y</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">1</span>
+y &lt;-<span class="st"> </span><span class="dv">4</span>
+
+<span class="co">#create a new variable z and assign the sum of x and y</span>
+z &lt;-<span class="st"> </span>x <span class="op">+</span><span class="st"> </span>y
+
+<span class="co">#check the value of z</span>
+z</code></pre></div>
+<div id="lets-practice-2" class="section level4 unnumbered">
+<h4>Let's practice!</h4>
+<ul>
+<li>Create a variable <span style="color: #ef6079ff"><strong>pineapples</strong></span> and assign <span style="color: #ef6079ff"><strong>120</strong></span> as a numerical value.</li>
+<li>Create a variable <span style="color: #ef6079ff"><strong>strawberries</strong></span> and assign <span style="color: #ef6079ff"><strong>70</strong></span> as a numerical value.</li>
+<li>Create a new variable <span style="color: #ef6079ff"><strong>pineberries</strong></span> and assign <span style="color: #ef6079ff"><strong>the sum of pineapples and strawberries</strong></span> as its value (numerical)</li>
+<li>Check the value of <span style="color: #ef6079ff"><strong>pineberries</strong></span></li>
+</ul>
+<iframe width="100%" height="400" src="https://rdrr.io/snippets/embed/?code=" frameborder="0">
+</iframe>
+</div>
+</div>
+<div id="use-functions" class="section level2">
+<h2><span class="header-section-number">5.5</span> Use functions</h2>
+<ul>
+<li>What is function?
+<ul>
+<li>a type of <span style="color: #ef6079ff"><strong>set procedure(s)</strong></span> to perform a task</li>
+</ul></li>
+<li>Calculate the sum of x, y, and z
+<ul>
+<li>R has lots of R functions that you can use, which makes it easier to perform data cleaning/ analysis</li>
+<li>You can also <span style="color: #ef6079ff"><strong>write your own functions</strong></span> if you'd like in the future!</li>
+</ul></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">1</span>
+y &lt;-<span class="st"> </span><span class="dv">4</span>
+z &lt;-<span class="st"> </span>x <span class="op">+</span><span class="st"> </span>y
+
+<span class="co">#sum up x, y and z using the sum() function</span>
+<span class="kw">sum</span>(x, y, z)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#JFYI, what if you want to write your own fuction to calcurate the sum? </span>
+<span class="co"># a, b, c can be anything</span>
+mySum &lt;-<span class="st"> </span><span class="cf">function</span>(a, b, c){
+  a <span class="op">+</span><span class="st"> </span>b <span class="op">+</span><span class="st"> </span>c <span class="co">#telling R to add a, b, and c</span>
+}
+
+<span class="co">#if you plug in numbers to your mySum function... you can calculate the sum! </span>
+<span class="kw">mySum</span>(<span class="dv">300</span>, <span class="dv">750</span>, <span class="dv">1000</span>)</code></pre></div>
+<div id="lets-practice-3" class="section level4 unnumbered">
+<h4>Let's practice!</h4>
+<ul>
+<li>Create a variable <span style="color: #ef6079ff"><strong>pineapples</strong></span> and assign <span style="color: #ef6079ff"><strong>120</strong></span> as a numerical value</li>
+<li>Create a variable <span style="color: #ef6079ff"><strong>strawberries</strong></span> and assign <span style="color: #ef6079ff"><strong>70</strong></span> as a numerical value</li>
+<li>Create a new variable <span style="color: #ef6079ff"><strong>pineberries</strong></span> and assign <span style="color: #ef6079ff"><strong>the sum of pineapples and strawberries</strong></span></li>
+<li>Sum up pinapples, strawberries, and pineberries using the <span style="color: #ef6079ff"><strong>sum()</strong></span> function</li>
+</ul>
+<iframe width="100%" height="400" src="https://rdrr.io/snippets/embed/?code=" frameborder="0">
+</iframe>
+</div>
+</div>
+<div id="make-a-data-frame" class="section level2">
+<h2><span class="header-section-number">5.6</span> Make a data frame</h2>
+<ul>
+<li>Make a data frame &quot;df1&quot;
+<ul>
+<li>(explanation 1): <span style="color: #ef6079ff"><strong>&quot;variable&quot;</strong></span> is a <span style="color: #ef6079ff"><strong>column name</strong></span>, <span style="color: #ef6079ff"><strong>c(&quot;&quot;, &quot;&quot;)</strong></span> is to add <span style="color: #ef6079ff"><strong>multiple</strong></span> vairiables. This says assign x to the &quot;variable&quot; column, row 1; assign y to the &quot;variable&quot; column, row 2; assign z to the &quot;variable&quot; column, row 3</li>
+<li>(explanation 2): <span style="color: #ef6079ff"><strong>&quot;value&quot;</strong></span> is a <span style="color: #ef6079ff"><strong>column name</strong></span>. This says that assign 1 to the &quot;value&quot; column, row 1; assign 4 to the &quot;value&quot; column, row 2; assign 10 to the &quot;value&quot; column, row 3</li>
+</ul></li>
+<li>Calculate the mean of x, y and z</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df1 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="st">&quot;variable&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>, <span class="st">&quot;z&quot;</span>), <span class="co">#(explanation 1)</span>
+                   <span class="st">&quot;value&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">10</span>)) <span class="co">#(explanation 2)</span>
+
+<span class="kw">str</span>(df1)
+
+<span class="co">#calculate mean</span>
+<span class="kw">mean</span>(df1<span class="op">$</span>value) <span class="co">#&quot;$&quot; is select &quot;value column&quot; from df1</span></code></pre></div>
+<div id="lets-practice-4" class="section level4 unnumbered">
+<h4>Let's practice!</h4>
+<ul>
+<li>Create a <span style="color: #ef6079ff"><strong>data frame &quot;fruits&quot;</strong></span>, which contains two columns (&quot;fruitType&quot; and &quot;amount&quot;)
+<ul>
+<li>pineapples, which the value is 120</li>
+<li>strawberries, which the value is 70</li>
+<li>pineberries, which the value is 190</li>
+</ul></li>
+<li>Check the <span style="color: #ef6079ff"><strong>structure</strong></span> of the data frame</li>
+<li>Calculate the <span style="color: #ef6079ff"><strong>mean</strong></span> of &quot;amount&quot;
+<ul>
+<li>select the &quot;amount&quot; column from the data frame</li>
+</ul></li>
+</ul>
+<iframe width="100%" height="400" src="https://rdrr.io/snippets/embed/?code=" frameborder="0">
+</iframe>
+</div>
+</div>
+<div id="create-a-simple-plot" class="section level2">
+<h2><span class="header-section-number">5.7</span> Create a simple plot</h2>
+<ul>
+<li>Create a data frame &quot;firstHalf&quot;</li>
+<li>Create a simple bar plot using the &quot;barplot()&quot; function</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">firstHalf &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="st">&quot;month&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Jan&quot;</span>, <span class="st">&quot;Feb&quot;</span>, <span class="st">&quot;Mar&quot;</span>, <span class="st">&quot;Apr&quot;</span>, <span class="st">&quot;May&quot;</span>, <span class="st">&quot;June&quot;</span>), 
+                   <span class="st">&quot;value&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">150</span>, <span class="dv">200</span>, <span class="dv">15</span>, <span class="dv">70</span>, <span class="dv">300</span>, <span class="dv">60</span>)) 
+
+<span class="co">#create a bar plot. names.arg is to label each bar</span>
+<span class="kw">barplot</span>(firstHalf<span class="op">$</span>value, <span class="dt">names.arg =</span> <span class="kw">c</span>(<span class="st">&quot;Jan&quot;</span>, <span class="st">&quot;Feb&quot;</span>, <span class="st">&quot;Mar&quot;</span>, <span class="st">&quot;Apr&quot;</span>, <span class="st">&quot;May&quot;</span>, <span class="st">&quot;June&quot;</span>)) </code></pre></div>
+<div id="lets-practice-5" class="section level4 unnumbered">
+<h4>Let's practice!</h4>
+<ul>
+<li>Create a <span style="color: #ef6079ff"><strong>data frame</strong></span> &quot;secondHalf.&quot; Monthly values are as follows:
+<ul>
+<li>July, 250</li>
+<li>August, 10</li>
+<li>September, 600</li>
+<li>October, 120</li>
+<li>November, 80</li>
+<li>December, 50</li>
+</ul></li>
+<li>Create a <span style="color: #ef6079ff"><strong>bar plot</strong></span> using the <span style="color: #ef6079ff"><strong>barplot()</strong></span> function
+<ul>
+<li>Make sure to <span style="color: #ef6079ff"><strong>label</strong></span> each bars</li>
+</ul></li>
+</ul>
+<iframe width="100%" height="400" src="https://rdrr.io/snippets/embed/?code=" frameborder="0">
+</iframe>
+</div>
+</div>
+<div id="use-a-pre-made-dataset-to-examine-and-plot-the-data" class="section level2">
+<h2><span class="header-section-number">5.8</span> Use a pre-made dataset to examine and plot the data</h2>
+<ul>
+<li>R has <span style="color: #ef6079ff"><strong>dataset packages</strong></span> you can use for your analysis</li>
+<li>Today, let's use <a href="https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/airquality.html">the New York Air Quality Measurements data (May-September, 1973)</a></li>
+<li>Load the dataset
+<ul>
+<li>Check <span style="color: #ef6079ff"><strong>how many observations</strong></span> (data points) they are</li>
+<li>Calculate the <span style="color: #ef6079ff"><strong>mean</strong></span> maximum daily temperature</li>
+<li>Make a <span style="color: #ef6079ff"><strong>histogram</strong></span> of the maximum daily temperature</li>
+</ul></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#load the dataset</span>
+airquality
+
+<span class="co">#chekc the data structure </span>
+<span class="kw">str</span>(airquality)
+
+<span class="co">#calculate the mean maximum daily tempurature of the dataset</span>
+<span class="kw">mean</span>(airquality<span class="op">$</span>Temp)
+
+<span class="co">#make a histgram of the maximum daily tempurature</span>
+<span class="kw">hist</span>(airquality<span class="op">$</span>Temp)</code></pre></div>
+<div id="lets-practice-6" class="section level4 unnumbered">
+<h4>Let's practice!</h4>
+<ul>
+<li><span style="color: #ef6079ff"><strong>Load</strong></span> the airquality dataset</li>
+<li>Calculate the <span style="color: #ef6079ff"><strong>mean</strong></span> of the average wind speed of the dataset</li>
+<li>Make a <span style="color: #ef6079ff"><strong>histogram</strong></span> of the average wind speed</li>
+</ul>
+<iframe width="100%" height="400" src="https://rdrr.io/snippets/embed/?code=" frameborder="0">
+</iframe>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-analysis-in-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="snippets-of-dplyr-and-ggplot.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["06-05-20_r_wokshop_test.pdf", "06-05-20_r_wokshop_test.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

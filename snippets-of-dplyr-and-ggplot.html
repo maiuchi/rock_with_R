@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6 Snippets of dplyr and ggplot | Rock Your Resume with R</title>
+  <meta name="description" content="6 Snippets of dplyr and ggplot | Rock Your Resume with R" />
+  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6 Snippets of dplyr and ggplot | Rock Your Resume with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6 Snippets of dplyr and ggplot | Rock Your Resume with R" />
+  
+  
+  
+
+<meta name="author" content="Mai Uchida" />
+
+
+<meta name="date" content="2020-06-15" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="base-r-syntax-and-data-type.html"/>
+<link rel="next" href="practice-problem.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Rock Your Resume with R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome!</a></li>
+<li class="chapter" data-level="1" data-path="why-learn-r.html"><a href="why-learn-r.html"><i class="fa fa-check"></i><b>1</b> Why learn R?</a><ul>
+<li class="chapter" data-level="" data-path="why-learn-r.html"><a href="why-learn-r.html#pros-and-cons-of-r"><i class="fa fa-check"></i>Pros and Cons of R</a></li>
+<li class="chapter" data-level="" data-path="why-learn-r.html"><a href="why-learn-r.html#learning-a-programing-language-is-an-investment-choose-wisely"><i class="fa fa-check"></i>Learning a programing language is an investment, choose wisely</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-visualization-101.html"><a href="data-visualization-101.html"><i class="fa fa-check"></i><b>2</b> Data visualization 101</a><ul>
+<li class="chapter" data-level="" data-path="data-visualization-101.html"><a href="data-visualization-101.html#what-is-data-visualization"><i class="fa fa-check"></i>What is data visualization?</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-101.html"><a href="data-visualization-101.html#why-visualization-matters"><i class="fa fa-check"></i>Why visualization matters?</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-101.html"><a href="data-visualization-101.html#what-makes-it-a-good-visualization"><i class="fa fa-check"></i>What makes it a good visualization?</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="exploratory-and-explanatory-data-visualization.html"><a href="exploratory-and-explanatory-data-visualization.html"><i class="fa fa-check"></i><b>3</b> Exploratory and explanatory data visualization</a><ul>
+<li class="chapter" data-level="" data-path="exploratory-and-explanatory-data-visualization.html"><a href="exploratory-and-explanatory-data-visualization.html#exploratory-visualization"><i class="fa fa-check"></i>Exploratory visualization</a></li>
+<li class="chapter" data-level="" data-path="exploratory-and-explanatory-data-visualization.html"><a href="exploratory-and-explanatory-data-visualization.html#explanatory-visualization"><i class="fa fa-check"></i>Explanatory visualization</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-analysis-in-r.html"><a href="data-analysis-in-r.html"><i class="fa fa-check"></i><b>4</b> Data analysis in R</a><ul>
+<li class="chapter" data-level="4.1" data-path="data-analysis-in-r.html"><a href="data-analysis-in-r.html#r-studio"><i class="fa fa-check"></i><b>4.1</b> R Studio</a></li>
+<li class="chapter" data-level="4.2" data-path="data-analysis-in-r.html"><a href="data-analysis-in-r.html#set-up-an-environment"><i class="fa fa-check"></i><b>4.2</b> Set up an environment</a></li>
+<li class="chapter" data-level="4.3" data-path="data-analysis-in-r.html"><a href="data-analysis-in-r.html#r-packages"><i class="fa fa-check"></i><b>4.3</b> R packages</a></li>
+<li class="chapter" data-level="4.4" data-path="data-analysis-in-r.html"><a href="data-analysis-in-r.html#oooops-my-code-is-not-working"><i class="fa fa-check"></i><b>4.4</b> Oooops, my code is not working!</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="base-r-syntax-and-data-type.html"><a href="base-r-syntax-and-data-type.html"><i class="fa fa-check"></i><b>5</b> Base R syntax and data type</a><ul>
+<li class="chapter" data-level="5.1" data-path="base-r-syntax-and-data-type.html"><a href="base-r-syntax-and-data-type.html#data-type"><i class="fa fa-check"></i><b>5.1</b> Data type</a></li>
+<li class="chapter" data-level="5.2" data-path="base-r-syntax-and-data-type.html"><a href="base-r-syntax-and-data-type.html#create-a-variable-and-assign-a-value"><i class="fa fa-check"></i><b>5.2</b> Create a variable and assign a value</a></li>
+<li class="chapter" data-level="5.3" data-path="base-r-syntax-and-data-type.html"><a href="base-r-syntax-and-data-type.html#create-variables-and-calculate"><i class="fa fa-check"></i><b>5.3</b> Create variables and calculate</a></li>
+<li class="chapter" data-level="5.4" data-path="base-r-syntax-and-data-type.html"><a href="base-r-syntax-and-data-type.html#create-a-new-variable-and-assign-the-sum"><i class="fa fa-check"></i><b>5.4</b> Create a new variable and assign the sum</a></li>
+<li class="chapter" data-level="5.5" data-path="base-r-syntax-and-data-type.html"><a href="base-r-syntax-and-data-type.html#use-functions"><i class="fa fa-check"></i><b>5.5</b> Use functions</a></li>
+<li class="chapter" data-level="5.6" data-path="base-r-syntax-and-data-type.html"><a href="base-r-syntax-and-data-type.html#make-a-data-frame"><i class="fa fa-check"></i><b>5.6</b> Make a data frame</a></li>
+<li class="chapter" data-level="5.7" data-path="base-r-syntax-and-data-type.html"><a href="base-r-syntax-and-data-type.html#create-a-simple-plot"><i class="fa fa-check"></i><b>5.7</b> Create a simple plot</a></li>
+<li class="chapter" data-level="5.8" data-path="base-r-syntax-and-data-type.html"><a href="base-r-syntax-and-data-type.html#use-a-pre-made-dataset-to-examine-and-plot-the-data"><i class="fa fa-check"></i><b>5.8</b> Use a pre-made dataset to examine and plot the data</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html"><i class="fa fa-check"></i><b>6</b> Snippets of dplyr and ggplot</a><ul>
+<li class="chapter" data-level="6.1" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#what-is-dplyr"><i class="fa fa-check"></i><b>6.1</b> What is dplyr?</a></li>
+<li class="chapter" data-level="6.2" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#why-is-dplyr-so-handy"><i class="fa fa-check"></i><b>6.2</b> Why is dplyr so handy?</a></li>
+<li class="chapter" data-level="6.3" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#filter-subset-data-using-dplyr"><i class="fa fa-check"></i><b>6.3</b> Filter/ subset data using dplyr</a></li>
+<li class="chapter" data-level="6.4" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#filter-data-with-multiple-conditions-using-dplyr"><i class="fa fa-check"></i><b>6.4</b> Filter data with multiple conditions using dplyr</a></li>
+<li class="chapter" data-level="6.5" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#what-is-ggplot"><i class="fa fa-check"></i><b>6.5</b> What is ggplot?</a></li>
+<li class="chapter" data-level="6.6" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#why-is-ggplot-so-handy"><i class="fa fa-check"></i><b>6.6</b> Why is ggplot so handy?</a></li>
+<li class="chapter" data-level="6.7" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#create-your-first-line-graph-using-ggplot"><i class="fa fa-check"></i><b>6.7</b> Create your first line graph using ggplot</a></li>
+<li class="chapter" data-level="6.8" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#format-a-graph"><i class="fa fa-check"></i><b>6.8</b> Format a graph</a></li>
+<li class="chapter" data-level="6.9" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#clean-up-a-graph-even-more"><i class="fa fa-check"></i><b>6.9</b> Clean up a graph even more!</a></li>
+<li class="chapter" data-level="6.10" data-path="snippets-of-dplyr-and-ggplot.html"><a href="snippets-of-dplyr-and-ggplot.html#final-r-code-for-this-exercise"><i class="fa fa-check"></i><b>6.10</b> Final R code for this exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="practice-problem.html"><a href="practice-problem.html"><i class="fa fa-check"></i><b>7</b> Practice Problem</a><ul>
+<li class="chapter" data-level="7.1" data-path="practice-problem.html"><a href="practice-problem.html#set-up-an-environment-1"><i class="fa fa-check"></i><b>7.1</b> Set up an environment</a></li>
+<li class="chapter" data-level="7.2" data-path="practice-problem.html"><a href="practice-problem.html#load-the-new-york-city-leading-cause-of-death-data"><i class="fa fa-check"></i><b>7.2</b> Load the New York City Leading Cause of Death data</a></li>
+<li class="chapter" data-level="7.3" data-path="practice-problem.html"><a href="practice-problem.html#examine-the-data"><i class="fa fa-check"></i><b>7.3</b> Examine the data</a></li>
+<li class="chapter" data-level="7.4" data-path="practice-problem.html"><a href="practice-problem.html#want-to-learn-more-about-r-and-data-viz"><i class="fa fa-check"></i><b>7.4</b> Want to learn more about R and data viz?</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Rock Your Resume with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="snippets-of-dplyr-and-ggplot" class="section level1">
+<h1><span class="header-section-number">6</span> Snippets of dplyr and ggplot</h1>
+<p>To be honest, these two packages are the game changers. I use them almost everyday along with a couple of other packages.</p>
+<div id="what-is-dplyr" class="section level2">
+<h2><span class="header-section-number">6.1</span> What is dplyr?</h2>
+<p>dplyr is an R package that allows you to perform <span style="color: #ef6079ff"><strong>data manipulation</strong></span> easily.</p>
+</div>
+<div id="why-is-dplyr-so-handy" class="section level2">
+<h2><span class="header-section-number">6.2</span> Why is dplyr so handy?</h2>
+<ul>
+<li>Once you are out of your class assignments, you will need to do data cleaning and manipulation (wrangling) by yourself to perform a data analysis.
+<ul>
+<li>Real world datasets are usually messy unlike the dataset you get from your professors for your assignments (yes, they usually clean the data for you)</li>
+<li>We say that data analysists spend <span style="color: #ef6079ff"><strong>about 70%</strong></span> of their project time on data cleaning/ preparations</li>
+</ul></li>
+<li>The dplyr package helps you perform data cleaning tasks<br />
+</li>
+<li><a href="https://4.files.edl.io/b9e2/07/12/19/142839-a23788fb-1d3a-4665-9dc4-33bfd442c296.pdf">Data transformation with dplyr</a></li>
+</ul>
+</div>
+<div id="filter-subset-data-using-dplyr" class="section level2">
+<h2><span class="header-section-number">6.3</span> Filter/ subset data using dplyr</h2>
+<p>Let's say that you'd want to select only the <span style="color: #ef6079ff"><strong>May</strong></span> data from the airquality dataset we used in Chapter 5. You can do that pretty easily by using dplyr</p>
+<ul>
+<li>Load the dplyr package
+<ul>
+<li>For the very first time, you need to install the package: install.packages(&quot;dplyr&quot;) or install.packages(&quot;tidyverse&quot;&quot;)</li>
+<li>To load a package, use <span style="color: #ef6079ff"><strong>library()</strong></span> function</li>
+</ul></li>
+<li>Load the airquality dataset</li>
+<li>Make sure the data structure
+<ul>
+<li><span style="color: #ef6079ff"><strong>glimpse()</strong></span> is a dplyr function to check data structures</li>
+</ul></li>
+<li>Check the range of temperature in this dataset using the <span style="color: #ef6079ff"><strong>table()</strong></span> function</li>
+<li>Filter the data frame by May
+<ul>
+<li><span style="color: #ef6079ff"><strong>%&gt;%</strong></span> is called <span style="color: #ef6079ff"><strong>piping</strong></span> or <span style="color: #ef6079ff"><strong>pipe operator</strong></span>. This means that grab from previous action/ item
+<ul>
+<li>In this case, it is telling R to grab the airquality dataset and then select the data that the &quot;Month&quot; column is equal to 5</li>
+</ul></li>
+<li>Be aware that we use double equal signs (<span style="color: #ef6079ff"><strong>==</strong></span>) to tell R that we need the value that is <span style="color: #ef6079ff"><strong>exactly the same</strong></span> as 5 in the &quot;Month&quot; column
+<ul>
+<li>If you use a single equal sign (<span style="color: #ef6079ff"><strong>=</strong></span>), R will think that you are asking to <span style="color: #ef6079ff"><strong>assign</strong></span> the value 5 to the &quot;Month&quot; column, which will give you an error message.</li>
+<li>Single equal sign (<span style="color: #ef6079ff"><strong>=</strong></span>) is the same as (<span style="color: #ef6079ff"><strong>&lt;-</strong></span>) for R</li>
+</ul></li>
+</ul></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#load dplyr </span>
+<span class="kw">library</span>(dplyr)
+
+<span class="co">#load the dataset </span>
+airquality
+
+<span class="co">#check the data structure </span>
+<span class="kw">glimpse</span>(airquality)
+
+<span class="co">#check te range of temperature in this dataset</span>
+<span class="kw">table</span>(airquality<span class="op">$</span>Temp)
+
+<span class="co">#filter May data from the dataframe </span>
+airquality <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Month <span class="op">==</span><span class="st"> </span><span class="dv">5</span>)
+
+<span class="co">#if you want to make a data frame called &quot;may&quot; which has only May data </span>
+may &lt;-<span class="st"> </span>airquality <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Month <span class="op">==</span><span class="st"> </span><span class="dv">5</span>)</code></pre></div>
+<div id="lets-practice-2" class="section level4 unnumbered">
+<h4>Let's practice!</h4>
+<ul>
+<li>Load <span style="color: #ef6079ff"><strong>dplyr</strong></span> package</li>
+<li>Load <span style="color: #ef6079ff"><strong>airquality dataset</strong></span></li>
+<li>Check <span style="color: #ef6079ff"><strong>the data structure</strong></span></li>
+<li>Filter <span style="color: #ef6079ff"><strong>July</strong></span> data from the data frame</li>
+<li>Create <span style="color: #ef6079ff"><strong>a data frame</strong></span> called &quot;july&quot;</li>
+<li>What is the <span style="color: #ef6079ff"><strong>range</strong></span> of temperature in July?</li>
+</ul>
+<iframe width="100%" height="400" src="https://rdrr.io/snippets/embed/?code=" frameborder="0">
+</iframe>
+</div>
+</div>
+<div id="filter-data-with-multiple-conditions-using-dplyr" class="section level2">
+<h2><span class="header-section-number">6.4</span> Filter data with multiple conditions using dplyr</h2>
+<p>Now you know how to filter the data using dplyr. But what if you want to know how many days in May, 1973 were hotter than 74 degrees?</p>
+<ul>
+<li>Load dplyr package</li>
+<li>Load airquality dataset</li>
+<li>Filter <span style="color: #ef6079ff"><strong>May</strong></span> and <span style="color: #ef6079ff"><strong>Temperature &gt; 74</strong></span>
+<ul>
+<li>Notice that you use <span style="color: #ef6079ff"><strong>two pipes</strong></span> for this operation This code tells R, grab the airquality data and select May. <span style="color: #ef6079ff"><strong>And then from there</strong></span>, select the days that are hotter than 74</li>
+<li>logical operators</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Operator</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">&lt;</td>
+<td align="center">less than</td>
+</tr>
+<tr class="even">
+<td align="center">&lt;=</td>
+<td align="center">less than or equal to</td>
+</tr>
+<tr class="odd">
+<td align="center">&gt;</td>
+<td align="center">greater than</td>
+</tr>
+<tr class="even">
+<td align="center">&gt;=</td>
+<td align="center">greater than or equal to</td>
+</tr>
+<tr class="odd">
+<td align="center">==</td>
+<td align="center">exactly equal to</td>
+</tr>
+<tr class="even">
+<td align="center">!=</td>
+<td align="center">not equal to</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#load dplyr </span>
+<span class="kw">library</span>(dplyr)
+
+<span class="co">#load the dataset </span>
+airquality
+
+<span class="co">#filter May and temp &gt; 74 from the dataframe </span>
+airquality <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span>(Month <span class="op">==</span><span class="st"> </span><span class="dv">5</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span>(Temp <span class="op">&gt;</span><span class="st"> </span><span class="dv">74</span>)</code></pre></div>
+<div id="lets-practice-3" class="section level4 unnumbered">
+<h4>Let's practice!</h4>
+<ul>
+<li>Load <span style="color: #ef6079ff"><strong>dplyr</strong></span> package</li>
+<li>Load <span style="color: #ef6079ff"><strong>airquality dataset</strong></span></li>
+<li><span style="color: #ef6079ff"><strong>Filter</strong></span> the dataset by <span style="color: #ef6079ff"><strong>July</strong></span> and <span style="color: #ef6079ff"><strong>Temperature</strong></span> that are greater than or equal to <span style="color: #ef6079ff"><strong>85</strong></span></li>
+<li>Create a subset data frame called &quot;julyWarm&quot;</li>
+</ul>
+<iframe width="100%" height="400" src="https://rdrr.io/snippets/embed/?code=" frameborder="0">
+</iframe>
+</div>
+</div>
+<div id="what-is-ggplot" class="section level2">
+<h2><span class="header-section-number">6.5</span> What is ggplot?</h2>
+<p>ggplot is an R package that allows you to create nice-looking <span style="color: #ef6079ff"><strong>data visualization</strong></span> pieces</p>
+</div>
+<div id="why-is-ggplot-so-handy" class="section level2">
+<h2><span class="header-section-number">6.6</span> Why is ggplot so handy?</h2>
+<ul>
+<li>Data visualization is an important piece of your data analysis project, because you need to tell your audience a story of what you found in a <span style="color: #ef6079ff"><strong>understandable</strong></span> and <span style="color: #ef6079ff"><strong>easily digestible</strong></span> manner
+<ul>
+<li>R can be your <span style="color: #ef6079ff"><strong>one-stop-shop</strong></span> for your data analysis project
+<ul>
+<li>ggplot will let you create graphs without using other software</li>
+</ul></li>
+</ul></li>
+<li>You don't need to know design theory to make nice visualizations
+<ul>
+<li>ggplot's preloaded theme/ color schemes will help to create a nice visualization</li>
+</ul></li>
+<li>If you are a design person, ggplot gives you to a freedom to <span style="color: #ef6079ff"><strong>customize</strong></span> your plots/ graphs
+<ul>
+<li>You can change font size, font color (using rbg or hex number), line types and more!</li>
+</ul></li>
+<li>One you design a base &quot;template&quot; of your visual piece, you can reuse it over and over again by copying and pasting the code!</li>
+<li>Good news for mappers, you can make <span style="color: #ef6079ff"><strong>maps</strong></span> using ggplot as well
+<ul>
+<li><a href="https://maiuchi.github.io/mapping_in_R/">Making a COVID-19 Map in R</a></li>
+</ul></li>
+</ul>
+</div>
+<div id="create-your-first-line-graph-using-ggplot" class="section level2">
+<h2><span class="header-section-number">6.7</span> Create your first line graph using ggplot</h2>
+<ul>
+<li>Let's keep working on the airquality data</li>
+<li>Filter the May data from the dataset</li>
+<li>Create a <span style="color: #ef6079ff"><strong>line graph</strong></span> which shows the relation of temperature and day
+<ul>
+<li>(explanation 1): ggplot() tells R which data and variable should be used in what way.
+<ul>
+<li>ggplot(data-frame, aes(x = , y = ))</li>
+<li>In today's case, we are telling R, use the <span style="color: #ef6079ff"><strong>may data frame</strong></span> as <span style="color: #ef6079ff"><strong>data</strong></span>, set <span style="color: #ef6079ff"><strong>Day</strong></span> as <span style="color: #ef6079ff"><strong>x-axis</strong></span>, <span style="color: #ef6079ff"><strong>Temp</strong></span> as <span style="color: #ef6079ff"><strong>y-axis</strong></span></li>
+</ul></li>
+<li>(explanation 2): geom_line() tells R what <span style="color: #ef6079ff"><strong>type of graphs</strong></span> to use
+<ul>
+<li><span style="color: #ef6079ff"><strong>geom_line()</strong></span> is a line graph.</li>
+<li>There are many types of graphs you can make using ggplot: <a href="https://www.r-graph-gallery.com/ggplot2-package.html">R Graph Gallery</a></li>
+<li><a href="https://ggplot2.tidyverse.org/reference/">ggplot function references</a></li>
+</ul></li>
+</ul></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#load dplyr and ggplot</span>
+<span class="kw">library</span>(dplyr)
+<span class="kw">library</span>(ggplot2)
+
+<span class="co">#load the dataset </span>
+airquality
+
+<span class="co">#filter May from the dataframe </span>
+may &lt;-<span class="st"> </span>airquality <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span>(Month <span class="op">==</span><span class="st"> </span><span class="dv">5</span>)
+
+<span class="co">#create a line graph using ggplot </span>
+<span class="kw">ggplot</span>(may, <span class="kw">aes</span>(Day, Temp)) <span class="op">+</span><span class="st">  </span><span class="co">#(explanation 1)</span>
+<span class="st">  </span><span class="kw">geom_line</span>() <span class="co">#(explanation 2)</span></code></pre></div>
+<div id="lets-practice-4" class="section level4 unnumbered">
+<h4>Let's practice!</h4>
+<ul>
+<li>Load dplyr package</li>
+<li>Load airquality dataset</li>
+<li>Filter the dataset by July</li>
+<li>Create a line graph which shows the relation of temperature and day</li>
+</ul>
+<iframe width="100%" height="400" src="https://rdrr.io/snippets/embed/?code=" frameborder="0">
+</iframe>
+</div>
+</div>
+<div id="format-a-graph" class="section level2">
+<h2><span class="header-section-number">6.8</span> Format a graph</h2>
+<ul>
+<li>Ugh, the graph we just made is kind of ugly. Also, your audeince will never know what this graph is about...</li>
+<li>Change the <span style="color: #ef6079ff"><strong>color</strong></span> of the <span style="color: #ef6079ff"><strong>line</strong></span>
+<ul>
+<li>(explanation 1): you can change/specify the color of the line using color = &quot;#HEX NUMBER&quot;</li>
+<li><a href="https://color.adobe.com/create/color-wheel">Adobe Color Wheel</a></li>
+</ul></li>
+<li>Add <span style="color: #ef6079ff"><strong>title</strong></span>
+<ul>
+<li>(explanation 2): to add title to a graph, use <span style="color: #ef6079ff"><strong>labs(title =)</strong></span> function</li>
+</ul></li>
+<li>Change the theme
+<ul>
+<li>(explanation 3): R has a <span style="color: #ef6079ff"><strong>pre-made themes</strong></span> for graphs. themw_bw() is one of them</li>
+</ul></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#load dplyr and ggplot</span>
+<span class="kw">library</span>(dplyr)
+<span class="kw">library</span>(ggplot2)
+
+<span class="co">#load the dataset </span>
+airquality
+
+<span class="co">#filter May from the dataframe </span>
+may &lt;-<span class="st"> </span>airquality <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span>(Month <span class="op">==</span><span class="st"> </span><span class="dv">5</span>)
+
+<span class="co">#create a plot</span>
+<span class="kw">ggplot</span>(may, <span class="kw">aes</span>(Day, Temp)) <span class="op">+</span><span class="st">  </span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">color =</span> <span class="st">&quot;#000080&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="co">#(explanation 1) </span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Tempurature Trends in NYC (May, 1973)&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="co">#(explanation 2)</span>
+<span class="st">  </span><span class="kw">theme_bw</span>()  <span class="co">#(explanation 3)</span></code></pre></div>
+<div id="lets-practice-5" class="section level4 unnumbered">
+<h4>Let's practice!</h4>
+<ul>
+<li>Load dplyr package</li>
+<li>Load airquality dataset</li>
+<li>Filter the dataset by July</li>
+<li>Create a <span style="color: #ef6079ff"><strong>linegraph</strong></span> which shows the relation of temperature and day</li>
+<li>Add <span style="color: #ef6079ff"><strong>title</strong></span></li>
+<li>Change the theme of the graphic to theme_bw() and remove background
+<ul>
+<li>you can also try other themes like:
+<ul>
+<li><span style="color: #ef6079ff"><strong>theme_classic()</strong></span></li>
+<li><span style="color: #ef6079ff"><strong>theme_minimal()</strong></span></li>
+<li><span style="color: #ef6079ff"><strong>theme_dark()</strong></span></li>
+</ul></li>
+</ul></li>
+</ul>
+<iframe width="100%" height="400" src="https://rdrr.io/snippets/embed/?code=" frameborder="0">
+</iframe>
+</div>
+</div>
+<div id="clean-up-a-graph-even-more" class="section level2">
+<h2><span class="header-section-number">6.9</span> Clean up a graph even more!</h2>
+<ul>
+<li>Better! But, let's clean up a little bit more!
+<ul>
+<li>According you Edward Tufte, &quot;data graphics&quot; should have a <span style="color: #ef6079ff"><strong>data-ink ratio</strong></span> close to <span style="color: #ef6079ff"><strong>1</strong></span> (Tufte, 1982)
+<ul>
+<li>data ink is &quot;non-erasable core of a graphic&quot;</li>
+<li>Data-ink ratio <span class="math inline">\(= \frac{\text{data-ink}}{\text{total ink used to print the graphic}}\)</span></li>
+</ul></li>
+<li>This suggest that more readable graphics have less elements that do not directly relate to data
+<ul>
+<li>(e.g.) background grid, tick marks etc... <br /> <br /></li>
+</ul></li>
+</ul></li>
+<li>Make your graph cleaner and readable
+<ul>
+<li>When you want to change non-data element of the graph, you can modify it by adding the function <span style="color: #ef6079ff"><strong>theme()</strong></span>
+<ul>
+<li>(explanation 1): <span style="color: #ef6079ff"><strong>panel.grid</strong></span> means the grid of your graph. <span style="color: #ef6079ff"><strong>element_blank()</strong></span> tells R to remove it</li>
+<li>(explanation 2): <span style="color: #ef6079ff"><strong>panel.border</strong></span> means the borders of your graph. <span style="color: #ef6079ff"><strong>element_blank()</strong></span> tells R to remove it</li>
+<li>(explanation 3): <span style="color: #ef6079ff"><strong>axis.line</strong></span> means the line of x and y axises. <span style="color: #ef6079ff"><strong>element_line()</strong></span> tells R to change the look of the lines. In this case, the code tells R, change the color to black and line thickness to 0.3</li>
+</ul></li>
+</ul></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#load dplyr and ggplot</span>
+<span class="kw">library</span>(dplyr)
+<span class="kw">library</span>(ggplot2)
+
+<span class="co">#load the dataset </span>
+airquality
+
+<span class="co">#filter May from the dataframe </span>
+may &lt;-<span class="st"> </span>airquality <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span>(Month <span class="op">==</span><span class="st"> </span><span class="dv">5</span>)
+
+<span class="co">#create a plot</span>
+<span class="kw">ggplot</span>(may, <span class="kw">aes</span>(Day, Temp)) <span class="op">+</span><span class="st">  </span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">color =</span> <span class="st">&quot;#000080&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Tempurature Trends in NYC (May, 1973)&quot;</span>)<span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.grid =</span> <span class="kw">element_blank</span>(), <span class="co">#(explanation 1)</span>
+        <span class="dt">panel.border =</span> <span class="kw">element_blank</span>(), <span class="co">#(explanation 2)</span>
+        <span class="dt">axis.line =</span> <span class="kw">element_line</span>(<span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="fl">0.3</span>)) <span class="co">#(explanation 3)</span></code></pre></div>
+<div id="lets-practice-6" class="section level4 unnumbered">
+<h4>Let's practice!</h4>
+<ul>
+<li>Load dplyr package</li>
+<li>Load airquality dataset</li>
+<li>Filter the dataset by July</li>
+<li>Create a <span style="color: #ef6079ff"><strong>line graph</strong></span> which shows the relation of temperature and day</li>
+<li>Change the color of your line graph to &quot;turquoise4&quot;
+<ul>
+<li><a href="http://sape.inf.usi.ch/quick-reference/ggplot2/colour">R Predetermined Colors</a></li>
+</ul></li>
+<li>Add a <span style="color: #ef6079ff"><strong>title</strong></span> and <span style="color: #ef6079ff"><strong>caption</strong></span>
+<ul>
+<li>make the caption as &quot;source: the New York State Department of Conservation (ozone data) and the National Weather Service (meteorological data)&quot;</li>
+</ul></li>
+<li>Assign a <span style="color: #ef6079ff"><strong>theme</strong></span> to your graph</li>
+<li>Remove unnecessary elements</li>
+<li>Make your <span style="color: #ef6079ff"><strong>axis line</strong></span> grey and 0.4 (thickness)</li>
+</ul>
+<iframe width="100%" height="400" src="https://rdrr.io/snippets/embed/?code=" frameborder="0">
+</iframe>
+</div>
+</div>
+<div id="final-r-code-for-this-exercise" class="section level2">
+<h2><span class="header-section-number">6.10</span> Final R code for this exercise</h2>
+<ul>
+<li>When you write and run R code in R Studio, you don't need to load your packages each time you run code
+<ul>
+<li>Difference between install and load packages
+<ul>
+<li>Install packages: You only need to do it <span style="color: #ef6079ff"><strong>once</strong></span> when you don't have a package installed in your R</li>
+<li>Load packages: You need to load them when <span style="color: #ef6079ff"><strong>every time</strong></span> you re-open R or want to use a package that is not loaded yet (package is already installed)</li>
+<li>Make sure you install and load all the packages you need in the <span style="color: #ef6079ff"><strong>beginning</strong></span> of your code</li>
+</ul></li>
+</ul></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#install packages (only if you don&#39;t have them installed)</span>
+<span class="kw">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)
+<span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)
+
+<span class="co">#load packages</span>
+<span class="kw">library</span>(ggplot2)
+<span class="kw">library</span>(dplyr)
+
+<span class="co">#since the airquality dataset is preloaded to R, check the structure </span>
+<span class="kw">glimpse</span>(airquality)
+
+<span class="co">#filter the data by May and make a dataframe called may</span>
+may &lt;-<span class="st"> </span>airquality <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span>(Month <span class="op">==</span><span class="st"> </span><span class="dv">5</span>)
+
+<span class="co">#create a plot </span>
+<span class="kw">ggplot</span>(may, <span class="kw">aes</span>(Day, Temp)) <span class="op">+</span><span class="st">  </span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">color =</span> <span class="st">&quot;#000080&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Tempurature Trends in NYC (May, 1973)&quot;</span>, 
+       <span class="dt">caption =</span> 
+         <span class="st">&quot;source: the New York State Department of Conservation (ozone data) </span>
+<span class="st">          and the National Weather Service (meteorological data)&quot;</span>)<span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">31</span>), <span class="co">#setting the starting point to 1 and end to 31</span>
+                     <span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>),  <span class="co">#expand plot area, make it start right at 1</span>
+                     <span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">pretty_breaks</span>(<span class="dt">n =</span> <span class="dv">29</span>)) <span class="op">+</span><span class="st"> </span><span class="co">#increased tick marks</span>
+<span class="st">  </span><span class="kw">theme_classic</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span>(
+    <span class="dt">plot.caption =</span> <span class="kw">element_text</span>(<span class="dt">color =</span> <span class="st">&quot;grey60&quot;</span>, <span class="dt">size =</span> <span class="dv">6</span>), <span class="co">#change the size and color of caption</span>
+    <span class="dt">plot.margin =</span> <span class="kw">unit</span>(<span class="kw">c</span>(<span class="dv">20</span>, <span class="dv">20</span>, <span class="dv">20</span>, <span class="dv">10</span>), <span class="st">&quot;pt&quot;</span>) <span class="co">#give wider margin on the right side </span>
+  )</code></pre></div>
+<div id="lets-practice-7" class="section level4 unnumbered">
+<h4>Let's practice!</h4>
+<ul>
+<li>By using R Studio, create a nice-looking clean graph that shows temperature trends in NYC in July, 1973 using the airquality data and all the things you learned today.</li>
+<li>I recommend not copying this entire chunk of code, but try to write by your own (you will learn R only by practice!). When doing so, make sure you...
+<ul>
+<li>created an <span style="color: #ef6079ff"><strong>R project</strong></span> file and <span style="color: #ef6079ff"><strong>R script</strong></span></li>
+<li>check your <span style="color: #ef6079ff"><strong>work directory</strong></span> and set your work directly in a proper location</li>
+<li>load all your <span style="color: #ef6079ff"><strong>packages</strong></span> you need for this analysis at the beginning of your script</li>
+<li>check your <span style="color: #ef6079ff"><strong>data structure</strong></span>
+<ul>
+<li>what are column names?</li>
+<li>how many data points?</li>
+<li>data types?</li>
+</ul></li>
+<li>filter and <span style="color: #ef6079ff"><strong>subset</strong></span> your data</li>
+<li>plot a <span style="color: #ef6079ff"><strong>graph</strong></span>
+<ul>
+<li>make sure you have a <span style="color: #ef6079ff"><strong>title</strong></span> and <span style="color: #ef6079ff"><strong>caption</strong></span></li>
+<li><span style="color: #ef6079ff"><strong>remove</strong></span> all the unnecessary elements</li>
+</ul></li>
+</ul></li>
+</ul>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="base-r-syntax-and-data-type.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="practice-problem.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["06-05-20_r_wokshop_test.pdf", "06-05-20_r_wokshop_test.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
